@@ -13,8 +13,8 @@ import ExternalCode from '@edc4it/reveal.js-external-code';
 
 const deck = new Reveal()
 deck.initialize({
-        width: "50%",
-        height: "50%",
+        // width: "50%",
+        // height: "50%",
 
         hash: true,
         // history: true,
@@ -24,7 +24,7 @@ deck.initialize({
         navigationMode: "linear",
 
         externalCode: {
-            basePath: "/intro2rust"
+            basePath: "/git-basics"
         },
         plugins: [ExternalCode, RevealHighlight],
       });

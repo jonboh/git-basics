@@ -17,6 +17,7 @@
           asciinema-automation
 
           nodejs
+          go
         ];
         shellHook = ''
           export STARSHIP_CONFIG=$(realpath ./starship.toml)

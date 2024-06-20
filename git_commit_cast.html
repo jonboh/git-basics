@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF8" />
+    <title>Asciicast Player</title>
+    <link rel="stylesheet" type="text/css" href="/asciinema-player.css" />
+    <script src="/asciinema-player.min.js"></script>
+  </head>
+  <body>
+    <div id="cast"></div>
+    <script>
+      AsciinemaPlayer.create(
+        '/assets/git_log_1.cast',
+        document.getElementById('cast'),
+        {
+          speed: 1.5,
+          rows: 30,
+          cols: 120,
+          terminalFontSize: '24px',
+          fit: false,
+          controls: true,
+        },
+      )
+    </script>
+  </body>
+</html>

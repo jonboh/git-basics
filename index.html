@@ -2,31 +2,144 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/ico" href="intro2rust/assets/ferris.ico" />
+    <link rel="icon" type="image/ico" href="/assets/git_logo.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>intro2rust</title>
+    <title>git-basics</title>
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
         <section>
           <h3>Git Basics</h3>
-          <img src="/assets/ferris.png" alt="ferris" />
+          <img src="/assets/git_logo.png" alt="ferris" />
+        </section>
+        <section>
+          <h3>Git Basics</h3>
+          <p>To understand <code>git</code> use the terminal</p>
+          <p>
+            Once you understand <code>git</code>, use your IDE functionality
+          </p>
+        </section>
+        <section>
+          <section>
+            <h3>git config</h3>
+          </section>
+          <section>
+            <h3>Local vs Global</h3>
+            <pre><code>git config --local</code></pre>
+            <pre><code>git config --global</code></pre>
+          </section>
+          <section>
+            <h3>user and email</h3>
+            <pre><code>git config --global user.name "Your Name"</code></pre>
+            <pre><code>git config --global user.email "your_email@example.com"</code></pre>
+            <pre><code>git config --global --list</code></pre>
+            <p>This is the bare minimum config to be able to commit</p>
+          </section>
+          <section>
+            <h3>but wait there's more</h3>
+            <pre><code>man git config</code></pre>
+            <img src="/assets/man.png" alt="" />
+          </section>
         </section>
         <section>
           <h3>git init</h3>
+          <img src="/assets/git_init.png" />
+          <p><small>You might get a warning about branch naming.</small></p>
+          <pre><code>git config --global init.defaultBranch main </code></pre>
         </section>
         <section>
-          <h3>git clone</h3>
+          <h3>git init</h3>
+          <img src="/assets/git_init.png" />
+          <p>
+            <small
+              >Everything in git is tracked using files in
+              <code>.git</code></small
+            >
+          </p>
+          <p>
+            <small>
+              As long as you dont remove or modify files manually inside
+              <code>.git</code> it is generally difficult permanently to lose
+              work (in tracked files)
+            </small>
+          </p>
         </section>
         <section>
-          <h3>commits</h3>
+          <section>
+            <h3>commits</h3>
+            <ul>
+              <li>Itentified by SHA (Secure Hashing Algorithm)</li>
+              <li>
+                Sha generated with your name, email, <strong>time</strong>,
+                commit msg
+                <ul>
+                  <li>aka unique and ordered</li>
+                </ul>
+              </li>
+              <li>
+                Each commit* has at least a parent generating a graph (DAG)
+              </li>
+            </ul>
+          </section>
+          <section data-transition="none">
+            <h3>Making a commit</h3>
+            <img src="/assets/adding_files_1.png" />
+          </section>
+          <section data-transition="none">
+            <h3>Making a commit</h3>
+            <p>
+              <small
+                >Files get added to the <strong>staging area</strong></small
+              >
+            </p>
+            <img src="/assets/adding_files_2.png" />
+          </section>
+          <section data-transition="none">
+            <h3>Making a commit</h3>
+            <p>
+              <small
+                >A commit integrates changes in the
+                <strong>staging area</strong> into the git history</small
+              >
+            </p>
+            <img src="/assets/git_commit.png" />
+          </section>
+          <!-- </div> -->
         </section>
         <section>
-          <h3>staging area</h3>
+          <section>
+            <h3>Exercise</h3>
+            <ol>
+              <li>Initialize a new repository</li>
+              <li>
+                Create two commits with two files
+                <ul>
+                  <li>
+                    Remember to <code>add</code> the files prior to making the
+                    commit
+                  </li>
+                </ul>
+              </li>
+            </ol>
+          </section>
         </section>
         <section>
-          <h3>Branching</h3>
+          <section>
+            <h3>Branches and HEAD</h3>
+            <p>
+              <small>Branch pointers get updated as we generate commits</small>
+            </p>
+            <iframe
+              src="git_commit_cast.html"
+              width="1024"
+              height="768"
+            ></iframe>
+          </section>
+        </section>
+        <section>
+          <h3>Remote</h3>
+          <img src="/assets/git_remote.png" />
         </section>
         <section>
           <section>
@@ -34,96 +147,360 @@
           </section>
           <section>
             <h3>git branch</h3>
-            <img src="/assets/rustup_targets_count.png" />
+            <img src="/assets/git_branch_1.png" />
+            <!-- <p>Branches are just updatable pointers</p> -->
           </section>
           <section>
-            <h3>git checkout -b</h3>
+            <h3>git branch shortcuts</h3>
+            <img src="/assets/git_branch_shortcuts.png" />
           </section>
           <section>
-            <h3>git switch ?</h3>
+            <h3>git branch</h3>
+            <img src="/assets/git_branch_commit.png" />
+            <p>Branches are just updatable pointers</p>
+          </section>
+          <section>
+            <h3>diverging branches</h3>
+            <img src="/assets/git_branch_diverge.png" />
+            <p>
+              <small
+                >where's <code>my_new_branch</code> and its last commit?!</small
+              >
+            </p>
+          </section>
+          <section>
+            <h3><code>git log --graph --all</code></h3>
+            <img src="/assets/git_log_graph.png" />
+            <p>
+              <small
+                ><code>main</code> and <code>my_new_branch</code> have
+                diverged</small
+              >
+            </p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h3>git merge</h3>
+            <img src="/assets/git_branch_merge.png" />
+            <p>merge-commits have two parents</p>
+          </section>
+          <section>
+            <h3>git merge</h3>
+            <img src="/assets/fast_forward_merge_partial.png" />
+            <p>
+              <small
+                >What will happen here when we
+                <code>git merge main</code>?</small
+              >
+            </p>
+          </section>
+          <section data-transition="none">
+            <h3>git merge</h3>
+            <small
+              ><ul>
+                <li>Not all merges will result in a merge-commit</li>
+                <li>Sometimes merges can be done with a fast-forward merge</li>
+              </ul></small
+            >
+            <img src="/assets/fast_forward_merge.png" alt="" />
           </section>
           <section>
             <h3>moving between branches</h3>
+            <img src="/assets/moving_branches.png" />
+            <p>
+              <small
+                >Note how <code>HEAD</code> is being updated on each
+                switch</small
+              >
+            </p>
           </section>
           <section>
-            <h3>git log --graph</h3>
+            <h3>Exercise</h3>
+            <ol>
+              <li>
+                Make a fast-forward merge
+                <ul>
+                  <li>
+                    Your commits should not diverge to be able to fast-forward
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                Make a merge-commit
+                <ul>
+                  <li>
+                    Your commits should diverge so that a merge-commit is
+                    necessary
+                  </li>
+                  <li>
+                    Use different files in your commits to avoid merge-conflicts
+                    (we are not there yet!)
+                  </li>
+                </ul>
+              </li>
+            </ol>
+          </section>
+          <section>
+            <h3>fetching from remote</h3>
+            <img src="/assets/git_fetch.png" alt="" />
+          </section>
+          <section>
+            <h3>fetching from remote</h3>
+            <ul>
+              <li>Fetching allow us to inspect the state of the upstream</li>
+              <li>It will not affect our work</li>
+            </ul>
+            <p>But, can we inspect those changes prior to merging them?</p>
+          </section>
+          <section>
+            <h3>checking out commits</h3>
+            <img src="/assets/checkout_commit_1.png" />
+          </section>
+          <section>
+            <h3>checking out commits</h3>
+            <img src="/assets/checkout_commit_2.png" />
+          </section>
+          <section>
+            <h3>checking out commits</h3>
+            <img src="/assets/checkout_commit_3.png" />
+          </section>
+          <section>
+            <h3>Exercise</h3>
+            <ol>
+              <li>Travel through your commit history</li>
+              <li>
+                Inspect on each commit the contents of the working directory
+              </li>
+              <li>Once you are done, switch back to your main branch</li>
+            </ol>
+          </section>
+          <section>
+            <h3>merge-conflicts</h3>
+            <img src="/assets/git_merge_conflict_0.png" />
+            <p>
+              <small
+                ><code>git pull</code> is equivalent to fetching and
+                merging</small
+              >
+            </p>
+          </section>
+          <section>
+            <h3>merge-conflicts</h3>
+            <img src="/assets/git_merge_conflict_1.png" />
+          </section>
+          <section>
+            <h3>merge-conflicts</h3>
+
+            <iframe
+              src="git_merge_conflict_cast.html"
+              width="1024"
+              height="510"
+            ></iframe
+            ><small
+              ><p>
+                You can use <code>git merge --abort</code> to start over
+              </p></small
+            >
+          </section>
+        </section>
+        <section>
+          <h3>Exercise</h3>
+          <ol>
+            <li>Generate a conflict</li>
+            <ul>
+              <li>
+                Use <code>git status</code> to track to what branches you are
+                commiting
+              </li>
+            </ul>
+            <li>
+              Make a merge-commit solving the conflict
+              <ul>
+                <li>
+                  Don't use your IDE functionality, use the raw text to solve
+                  the conflict
+                </li>
+              </ul>
+            </li>
+          </ol>
+        </section>
+        <section>
+          <section>
+            <h3>git reset</h3>
+            <img src="/assets/git_reset_1.png" alt="" />
+            <pre><code>git reset [commit]</code></pre>
+            <p>You can use HEAD~N to refer to the Nth commit</p>
+          </section>
+          <section data-transition="none">
+            <h3>git reset</h3>
+            <img src="/assets/git_reset_1.png" alt="" />
+            <p>
+              <small
+                >After the reset commit <code>0bad</code> is dangling.
+              </small>
+            </p>
+            <p>
+              <small
+                >No branch points to it and no one has it as its parent. Did we
+                lose our work?</small
+              >
+            </p>
+          </section>
+          <section>
+            <h3>git reflog</h3>
+            <img src="/assets/git_reflog.png" alt="" />
+            <p>
+              <small
+                ><code>git reflog</code> shows the history of the
+                <code>HEAD</code> and can help us reach dangling commits</small
+              >
+            </p>
+          </section>
+          <section>
+            <h3>Exercise</h3>
+            <ol>
+              <li>
+                Create a new branch, then make a commit in it such that it has
+                as its parent the first commit in your history.
+              </li>
+              <li>
+                Merge <strong>this new branch</strong> into your
+                <strong>main</strong>
+                <ul>
+                  <li>Use <code>git reset</code> if you did it backwards ;)</li>
+                </ul>
+              </li>
+            </ol>
           </section>
         </section>
         <section>
           <section>
-            <h3>diverging branches</h3>
-          </section>
-          <section>
-            <section>
-              <h3>merging</h3>
-            </section>
-            <section>
-              <h3>merge-commits</h3>
-            </section>
-            <section>
-              <h3>merge-conflicts! oh no!</h3>
-            </section>
-            <section>
-              <h3>fast-forward merge</h3>
-            </section>
-          </section>
-          <section>
-            <section>
-              <h3>rebase</h3>
-            </section>
+            <h3>git tag</h3>
+            <small
+              ><ul>
+                <li>Tags are inmobile pointers to commits</li>
+                <li>Frequently used to indicate versions and releases</li>
+              </ul></small
+            >
+            <img src="/assets/git_tag.png" alt="" />
           </section>
         </section>
         <section>
-          <section>
-            <h3>HEAD</h3>
-          </section>
+          <h3>git revert</h3>
+          <p>
+            <small
+              >Revert commits apply the inverse change of the commit they
+              revert</small
+            >
+            <img src="/assets/git_revert_2.png" alt="" />
+            <img src="/assets/git_revert_1.png" alt="" />
+          </p>
         </section>
         <section>
           <section>
-            <h1>Remotes</h1>
+            <h3>cheatsheet. moving in history</h3>
+            <table>
+              <tr>
+                <td>
+                  <small><code>git checkout [commit|branch]</code></small>
+                </td>
+                <td><small>Move to a [commit] or [branch]</small></td>
+              </tr>
+              <tr>
+                <td>
+                  <small><code>git reset [commit]</code></small>
+                </td>
+                <td><small>Reset branch to [commit]</small></td>
+              </tr>
+              <tr>
+                <td>
+                  <small><code>git reflog</code></small>
+                </td>
+                <td><small>History of HEAD</small></td>
+              </tr>
+              <tr>
+                <td>
+                  <small><code>git log --oneline --graph --all</code></small>
+                </td>
+                <td><small>Represent repo in graph form</small></td>
+              </tr>
+            </table>
           </section>
           <section>
-            <h3>tracking branches</h3>
-          </section>
-          <section>
-            <h3>git push</h3>
-          </section>
-          <section>
-            <h3>git push --force-with-lease</h3>
-            <p>a better `git push --force`</p>
-          </section>
-          <section>
-            <h3>NEVER CHANGE HISTORY OF A PUBLIC BRANCH</h3>
+            <h3>cheatsheet. Misc</h3>
+            <table>
+              <tr>
+                <td>
+                  <small><code>git checkout [file]</code></small>
+                </td>
+                <td>
+                  <small>Remove changes with respect to HEAD in [file]</small>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <small><code>git reset --hard</code></small>
+                </td>
+                <td><small>Clear all changes in tracked files</small></td>
+              </tr>
+              <tr>
+                <td>
+                  <small><code>git diff -w</code></small>
+                </td>
+                <td>
+                  <small>Show difference ignoring white-space</small>
+                </td>
+              </tr>
+            </table>
+            <p>
+              <small
+                >checkout and reset --hard can result in
+                <strong>loss of work</strong> if the changes removed have not
+                been commited anywhere</small
+              >
+            </p>
           </section>
         </section>
+
         <section>
-          <h3>git tag</h3>
+          <h3>Tips. TLDR</h3>
+          <img src="/assets/tldr.png" alt="" />
         </section>
+
         <section>
-          <h3>git diff -</h3>
-        </section>
-        <section>
-          <h3>rewriting history</h3>
+          <h3>but wait there's more</h3>
+          <table>
+            <tr>
+              <td><code>git rebase</code></td>
+              <td>
+                rebase can prevent merges by replaying changes, making histories
+                more linear
+              </td>
+            </tr>
+            <tr>
+              <td><code>git cherrypick</code></td>
+              <td>
+                with cherrypick you can apply changes from specific commits
+                instead of whole branches
+              </td>
+            </tr>
+            <tr>
+              <td><code>git worktree</code></td>
+              <td>
+                with worktrees you can have several branches/commits checked out
+              </td>
+            </tr>
+          </table>
         </section>
 
         <section>
           <h3>Learning Resources</h3>
           <ul>
             <li>
-              <a href="https://doc.rust-lang.org/book/" target="_blank"
-                >The Book: The Rust Programming Language</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://doc.rust-lang.org/rust-by-example/"
-                target="_blank"
-                >Rust by Example</a
-              >
-            </li>
-            <li>
-              <a href="https://github.com/rust-lang/rustlings" target="_blank"
-                >Rustlings</a
+              <a href="https://git-scm.com/book/en/v2" target="_blank"
+                >The Git Book: Pro Git</a
               >
             </li>
           </ul>

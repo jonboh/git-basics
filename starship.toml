@@ -1,16 +1,20 @@
 [git_branch]
-disabled=true
+disabled = true
 [git_status]
-disabled=true
+disabled = true
+[git_commit]
+disabled = true
 
 
+[python]
+disabled = true
 [rust]
-disabled=true
+disabled = true
 [package]
-disabled=true
+disabled = true
 
 [nix_shell]
-disabled=true
+disabled = true
 
 [nodejs]
-disabled=true
+disabled = true

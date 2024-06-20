@@ -1,7 +1,7 @@
 {
-  "name": "intro2rust",
+  "name": "git-basics",
   "version": "0.0.0",
-  "description": "Example HTML presentation with Reveal.js bundled with Vite.js",
+  "description": "git-basics HTML presentation with Reveal.js bundled with Vite.js",
   "private": true,
   "scripts": {
     "dev": "vite",
